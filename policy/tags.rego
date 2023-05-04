@@ -8,6 +8,11 @@ deny_missing_tags[msg] {
 
 deny_tags_lifecycle_unignored[msg] {
     resource = input.resource[type][name]
-    # please add solution here!
+    resource.tags
+    not ignores_tags_in_lifecycle(resource)
 	msg := sprintf("%v.%v does not ignore changes of tags attribute", [type, name])
+}
+
+ignores_tags_in_lifecycle(resource) {
+    resource.lifecycle.ignore_changes[_] = "${tags}"
 }
