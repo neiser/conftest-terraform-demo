@@ -4,3 +4,4 @@ image:
 vscode:
   extensions:
     - tsandall.opa
+    - Plex.vscode-regolint
